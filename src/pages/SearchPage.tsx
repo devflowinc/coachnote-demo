@@ -93,10 +93,12 @@ export const SearchPage = () => {
             <For each={scoreChunks()}>
               {(score_chunk) => (
                 <div class="flex w-[30%] max-w-lg flex-col gap-2 rounded-lg border border-stone-300 p-3">
-                  <img
-                    class="rounded-md"
-                    src={getYouTubeThumbnail(score_chunk.chunk.link ?? "")}
-                  />
+                  <a href={score_chunk.chunk.link ?? ""}>
+                    <img
+                      class="rounded-md"
+                      src={getYouTubeThumbnail(score_chunk.chunk.link ?? "")}
+                    />
+                  </a>
                   <p
                     innerHTML={getLongestSectionByNewline(
                       score_chunk.chunk.chunk_html ?? "",
