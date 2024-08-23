@@ -6,8 +6,6 @@ import Header from "../components/Header";
 import ShowToast from "../components/ShowToast";
 
 const getYouTubeThumbnail = (url: string) => {
-  console.log("url: ", url);
-
   const videoId = url.split("v=")[1];
   return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 };
@@ -39,13 +37,10 @@ export const SearchPage = () => {
     highlight_options: {
       highlight_strategy: "exactmatch",
       highlight_max_num: 50,
+      highlight_delimiters: ["?", ",", ".", "!", " "],
     },
   });
   const [scoreChunks, setScoreChunks] = createSignal<any[]>([]);
-
-  createEffect(() => {
-    console.log("results changed to: ", scoreChunks());
-  });
 
   createEffect(() => {
     const curSearchReqPayload = searchReqPayload();
